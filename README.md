@@ -170,7 +170,7 @@ Credentials for logging into the web interface, telnet and QtTerm port are confi
 
 
 
-### BPQ Ports:
+# BPQ Ports:
 
 
 For reference, in this unofficial configuration distribution, the following BPQ-Ports are preconfigured:
@@ -207,10 +207,11 @@ red        _
 ```
 
 
-### Notes:
+# Appendix 
 
+## Notes:
 
-### Totally Off the beaten track note: multiple nodes on one machine.
+###  Multiple nodes on one machine.
 
 
 Due to the fact I run multiple instances of bpq on my machine it is important to declare a different
@@ -225,9 +226,8 @@ looking in the /dev/shm/ directory.
 
 ### Auto-Starting with Systemd
 
-
 Look inside the doc/ directory for an example systemd service file as well as the instructions for how to
-implement the scripts necessary to auto-start linbpq at boot up.
+implement the scripts necessary to auto-start linbpq and qtsm at boot up.
 
 
 
