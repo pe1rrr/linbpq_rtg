@@ -193,7 +193,7 @@ the second port below.
 
 If you wish to add radio ports to BPQ, the numbers 1-9 are available. QtSoundModem is defined as a usable example for
 those without a hardware TNC (its very good on HF!). QtSoundModem can also be configured to work as a KISS TNC which
-may be desirable for VHF usage (multiuser).
+may be desirable for VHF usage (multiuser), and KISS mode is mandatory to use if you wish to utilise NETROM functionality.
 
 
 
