@@ -1,0 +1,13 @@
+#!/bin/sh
+progstr=$1
+if [ -z "$1" ]
+then
+echo "usage: ./gdbwait linbpq (or name of process if different on your system)"
+exit
+fi
+
+progpid=`pgrep -o $progstr`
+while [ "$progpid" = "" ]; do
+  progpid=`pgrep -o $progstr`
+done
+gdb -ex 'handle SIGPIPE nostop noprint pass' -ex continue -p $progpid

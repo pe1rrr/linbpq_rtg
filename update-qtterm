@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Choose piQtTermTCP for Raspberry Pi, or QtTermTCP for x86.
+file='piQtTermTCP'
+
+# In future it may be possible to pull from Stable rather than Beta but that setup doesnt yet exist
+# I will have to request that provision from John - pe1rrr/red
+
+branch='Beta'
+
+dir=bpqbin
+SW=QTTERM
+
+wget http://www.cantab.net/users/john.wiseman/Downloads/${branch}/${file} -O "${dir}/${SW}.new"
+chmod 755 "${dir}/${SW}.new"
+filedate=`date -r "${dir}/${SW}.new" "+%Y%m%d_%H%M"`
+
+mv "${dir}/${SW}.new" "${dir}/${SW}.${filedate}"
+
+# Do switcharoo
+
+unlink "${dir}/${SW}"
+cd "${dir}"
+ln -s "${SW}.${filedate}" "${SW}"
+
+
+# Create new symlink in the main dir
+
+cd ..
+unlink qtterm
+ln -s "${dir}/QTTERM" qtterm
+
+echo "New file with date suffix: ${file}.${filedate}"
+
+

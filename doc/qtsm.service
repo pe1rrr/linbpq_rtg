@@ -1,0 +1,18 @@
+[Unit]
+Description=QtSoundModem Start Script by PE1RRR
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/home/pi/bin
+Restart=always
+RestartSec=20
+StartLimitInterval=60
+StartLimitBurst=3
+User=pi
+Group=pi
+ExecStart=/usr/bin/screen -S QTSM-Console -d -m /home/pi/bin/startqtsm
+SyslogIdentifier=QTSM-Debug
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,29 @@
+#!/bin/bash
+dir=bpqbin
+
+# Choose: pilinbpq or linbpq for x86
+file="pilinbpq"
+
+# Default Branch (this is Beta only)
+branch="Beta"
+
+wget "http://www.cantab.net/users/john.wiseman/Downloads/${branch}/${file}" -O "${dir}/${file}.new"
+chmod 755 "${dir}/${file}.new"
+chmod u+s "${dir}/${file}.new"
+filedate=`date -r "${dir}/${file}.new" "+%Y%m%d_%H%M"`
+
+mv "${dir}/${file}.new" "${dir}/${file}.${filedate}"
+
+# Do the switcharoo
+
+unlink "${dir}/${file}"
+cd "${dir}"
+ln -s "${file}.${filedate}" "${file}"
+
+# Make new link in bpq main dir, regardless of which binary pulled we will always refer to it as linbpq from the main dir.
+cd ..
+unlink linbpq
+ln -s "${dir}/${file}" linbpq
+
+echo "If succeeded, new file has the date suffix: ${file}.${filedate}"
+

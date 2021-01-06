@@ -1,0 +1,3 @@
+# Edit this to reflect precise location of the bpq directory
+cd /home/pi/node
+./linbpq

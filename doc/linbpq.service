@@ -1,0 +1,19 @@
+[Unit]
+Description=LinBPQ
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/home/bpq/nodes/pe1rrr
+Restart=always
+RestartSec=90
+StartLimitInterval=400
+StartLimitBurst=3
+User=bpq
+Group=bpq
+ExecStart=/usr/bin/screen -S linbpq -d -m /home/bpq/nodes/pe1rrr/runbpq
+#ExecStart=/bin/bash /home/bpq/nodes/pe1rrr/runbpq
+SyslogIdentifier=LinBPQ
+
+[Install]
+WantedBy=multi-user.target

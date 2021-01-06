@@ -1,0 +1,10 @@
+#!/bin/bash
+# Please make sure alsa-oss is installed.
+# This workaround solves the PTT-delay glitch present in ALSA libs for ARM processes 
+# There is an open bug ticket for this with Raspbian but it has not seen any attention.
+# See: https://bugs.launchpad.net/raspbian/+bug/1819560
+# This is not required for the Raspberry Pi 4.
+# As this is running as root, your QtSoundModem.ini will have its ownership changed
+# to root on program exit, so be aware of this before editing the config by hand
+# 
+sudo aoss qtsm

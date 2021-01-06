@@ -1,0 +1,30 @@
+#!/bin/bash
+dir=bpqbin
+
+# Choose piQtSoundModem for Raspberry Pi or QtSoundModem for x86 version.
+file='piQtSoundModem'
+
+# Default Branch (Beta is the only one available but in future it may be possible to pull Stable)
+branch="Beta"
+
+wget http://www.cantab.net/users/john.wiseman/Downloads/${branch}/piQtSoundModem -O "${dir}/QTSM.new"
+chmod 755 "${dir}/QTSM.new"
+filedate=`date -r "${dir}/QTSM.new" "+%Y%m%d_%H%M"`
+
+mv "${dir}/QTSM.new" "${dir}/QTSM.${filedate}"
+
+# Do switcharoo
+
+unlink "${dir}/QTSM"
+cd "${dir}"
+ln -s "QTSM.${filedate}" "QTSM"
+
+# Create new main dir symlink
+
+cd ..
+unlink qtsm
+ln -s "${dir}/QTSM" qtsm
+
+echo "New file: ${file}.${filedate} in ${dir}"
+
+
