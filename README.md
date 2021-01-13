@@ -8,6 +8,7 @@
                                    
 # Before you get started:
 
+
 This setup only contains binaries for the Raspberry Pi platform.
 
 If you wish to have x86 32bit binaries, edit the update-xxxxx scripts and remove 'pi' from the filename
@@ -79,6 +80,8 @@ Good to know: Updates via the web interface will create .bak backup copies of fi
 
 # Node Linking
 
+## For Amateur Radio Use Only!
+
 The provided configuration is preset to open a UDP wormhole to both of PE1RRR's nodes, 
 PE1RRR-5 node is set up to allow automatic connections while setup to prevent 
 rogue nodes poisoning the network. The limitation is that your nodes won't propagate
@@ -94,6 +97,12 @@ your own chat-server to the network (if you absolutely must run one) there still
 configuration done on them to allow your chat-server to join the network, so if intending to link with mine
 please get in touch with your node and chat server's details. pe1rrr@amsat.org
 
+## For those wishing to experiment on CB Net 
+
+Replace: 
+	MAP PE1RRR-5 rrrnet.ehv-------.com UDP 10093 B ; Connection to PE1RRR's Auto-Happy-Node.
+With:
+	MAP DX3RRR-5 cbnet.ehv-------.com UDP 27235 B ; Connection to DX3RRR's Auto-Happy-Node.
 
 # Additional Tools provided:
 
