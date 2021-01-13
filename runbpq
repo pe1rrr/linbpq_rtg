@@ -1,3 +1,30 @@
 # Edit this to reflect precise location of the bpq directory
 cd /home/pi/node
+#
+#
+# Any stuff that needs to start before linbpq goes here. e.g. any rfcomm attachments for 
+# bluetooth TNCs etc.
+#
+# ---
+#
+# If using systemd start scripts from the doc directory, please make a symbolic link 
+# from your callsign in the bpq root directory to the existing linbpq symbolic link. 
+#
+# The reason for the chaining of symbolic links is to assist the binary updates that are kept
+# inside the bpqbin directory.
+#
+# In the bpq root directory (where bpq32.cfg resides):
+# 
+#
+# ln -s linbpq yourcallsign
+#
+# If not using systemd, you can leave this as-is. The callsign is used to start the binary
+# process as your callsign so that on a multiple-node installation it is able to differentiate
+# between the different processes.
+#
+# Default: ./linbpq 
+#
+# else change to ./yourcallsign
+#
 ./linbpq
+
