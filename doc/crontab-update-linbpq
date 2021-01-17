@@ -83,10 +83,13 @@ myNodes=("$@")
 
 if  [[ -z "${myNodes[@]}" ]]
 then
-	echo "Forgot to mention which instances you are updating, Usage: update-bpq <node1> <node2>"
-	echo "Important for telling systemd which process you are going to restart"
-	echo "On a multiple-instance BPQ installation the node directory has a callsign-symlink that is also a symlink to $bpqbin/$binary"
-	echo "so that the process runs using the callsign as the process name, uniquely identified by systemd to shutdown and restart"
+	echo "Forgot to mention which instances you are updating, Usage: crontab-update-bpq <node1> <node2>"
+	echo "e.g ./crontab-update-bpq pe1rrr"
+	echo "The callsign is used to tell systemd which process you are going to restart after updating"
+	echo "If your system is not yet set up with your callsign as a symbolic link to pilinbpq"
+        echo "you will need to first create it."
+	echo "cd into the bpqbin directory; cd bpqbin;  ln -s pilinbpq yourcallsign"
+	echo "If your node is not yet set up with systemd service startup, do not use this script!"
 	exit
 fi
 
