@@ -1,6 +1,8 @@
 # Edit this to reflect precise location of the bpq directory
 cd /home/pi/linbpq_rtg
+# Ahh heck I already set the path for you!
 #
+# DO not need to read further unless doing ninja stuff.
 #
 # Any stuff that needs to start before linbpq goes here. e.g. any rfcomm attachments for 
 # bluetooth TNCs etc.

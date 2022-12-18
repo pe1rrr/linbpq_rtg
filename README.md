@@ -153,7 +153,10 @@ The provided configuration is preset to open a UDP wormhole to both of PE1RRR's 
 
 Should you wish to have your node propagate through the network, please get in touch so that we can arrange a direct connection to PE1RRR-7, if resources permit!
 
-Once linked into the network, you should be able to reach nodes such as RRRCHT. If you wish to link your own chat-server to the network (if you absolutely must run one) there still needs to be some manual configuration done on them to allow your chat-server to join the network, so if intending to link with mine please get in touch with your node and chat server's details. pe1rrr@amsat.org
+Once linked into the network, you should be able to reach nodes such as RRRCHT. If you wish to link your own chat-server to the network (if you absolutely must run one) there still needs to be some manual configuration done on them to allow your chat-server to join the network, we also have a structured setup as the nodes in the chat are vast and will easily saturate a RF link, so please read this document first:
+
+https://eindhoven.space/radio-experiments/packet-radio/bpq-technicals/bpq-chat/chat-hub-linking/
+
 
 # Additional Tools provided:
 
