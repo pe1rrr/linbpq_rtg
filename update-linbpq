@@ -1,29 +1,48 @@
-#!/bin/bash
-dir=bpqbin
+#!/bin/bash 
+#
+#
+# Settings
+# Path to BPQ binary directory
+bpqbin=$PWD/bpqbin
+# Name of binary to pull as well as use
+binary=pilinbpq
+# WWW path to download
+bpqwww="http://www.cantab.net/users/john.wiseman/Downloads/Beta/${binary}"
 
-# Choose: pilinbpq or linbpq for x86
-file="pilinbpq"
+#### End of Settings
 
-# Default Branch (this is Beta only)
-branch="Beta"
+function getwww() {
+        wget ${bpqwww} -O ${bpqbin}/${binary}.tmp
+}
 
-wget "http://www.cantab.net/users/john.wiseman/Downloads/${branch}/${file}" -O "${dir}/${file}.new"
-chmod 755 "${dir}/${file}.new"
-chmod u+s "${dir}/${file}.new"
-filedate=`date -r "${dir}/${file}.new" "+%Y%m%d_%H%M"`
+function setup() {
+	getwww
+	chmod 755 "${bpqbin}/${binary}.tmp"
+	chmod u+s "${bpqbin}/${binary}.tmp"
+	version=`${bpqbin}/${binary}.tmp -v | grep Version | cut -d' ' -f 7`
+	mv "${bpqbin}/${binary}.tmp" "${bpqbin}/${binary}.${version}"
+	sudo setcap "CAP_NET_ADMIN=ep CAP_NET_RAW=ep CAP_NET_BIND_SERVICE=ep"  "${bpqbin}/${binary}.${version}"
+	unlink "${bpqbin}/${binary}"
+	ln -s "${bpqbin}/${binary}.${version}" "${bpqbin}/${binary}"
 
-mv "${dir}/${file}.new" "${dir}/${file}.${filedate}"
+}
 
-# Do the switcharoo
+oldfile=`readlink -f ${bpqbin}/${binary}`
 
-unlink "${dir}/${file}"
-cd "${dir}"
-ln -s "${file}.${filedate}" "${file}"
+if [ ! -f ${oldfile} ]; 
+then
+	echo "No existing binary found, first run? ok"
+	setup
+else
+	local=$(date -d "$( stat ${oldfile} | awk '/Modify/{gsub( /^[^:]+: +/,"",$0); print}' )" "+%s")
+	remote=$(date -d "$( curl -sI ${bpqwww} | awk '/last-modified/{gsub( /^[^:]+: +/,"",$0); print}' )" "+%s")
 
-# Make new link in bpq main dir, regardless of which binary pulled we will always refer to it as linbpq from the main dir.
-cd ..
-unlink linbpq
-ln -s "${dir}/${file}" linbpq
-
-echo "If succeeded, new file has the date suffix: ${file}.${filedate}"
-
+	if [[ ${local} -lt ${remote} ]]
+	then
+		setup
+		echo "Upgraded to version $version"
+	else
+		echo "Nothing to do"
+		ls -l ${bpqbin}
+	fi
+fi

@@ -1,5 +1,5 @@
 # Edit this to reflect precise location of the bpq directory
-cd /home/pi/node
+cd /home/pi/linbpq_rtg
 #
 #
 # Any stuff that needs to start before linbpq goes here. e.g. any rfcomm attachments for 
