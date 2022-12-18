@@ -49,17 +49,15 @@ cd /home/pi/linbpq_rtg
 ```
 Note: you can rename your linbpqi_rtg installation to anything, just ensure the path is set accordingly in runbpq.
 
-Open the bpq32.cfg in whichever text editor you prefer (mousepad, vim or nano for example)
+Open the ```bpq32.cfg``` in whichever text editor you prefer (mousepad, vim or nano for example)
 
-To get up and running, the callsign and alias of the node needs to be set to your own and sysop login info needs to be set.
+To get up and running, the callsign and alias of the node needs to be set to your own and sysop login info needs to be set- The web HTTP and telnet login for the sysop is located down in the **TELNET** port section of the ```bpq32.cfg``` file.
 
-The HTTP login info required is located down in the Telnet port section of the bpq32.cfg file.
-
-At this point is should be possible to launch the runbpq script and then interact with it via the web interface via http://IP-of-your-pi:8080/
+At this point is should be possible to launch the ```./runbpq``` script and then interact with it via the web interface via http://IP-of-your-pi:8080/
 
 If you have a web browser running on your Pi, http://127.0.0.1:8080
 
-Setting up auto-start and headless running is covered under the Systemd setup below in the appendix
+Setting up auto-start and headless running is covered under the **systemd** setup below in the appendix
 
 
 # File descriptions: (excluding auto-generated files)
@@ -229,7 +227,7 @@ red        _
 
 ### Get the latest binaries 
 
-All of the tools have an unofficial update-*XXXX* script that will download the latest Beta release from G8BPQ's website.
+All of the tools have an unofficial ```update-*XXXX*``` script that will download the latest Beta release from G8BPQ's website.
 
 ### Additional documentation:
 
@@ -251,10 +249,9 @@ different callsigns, obviously!). This distribution has MULTIPLE defined by defa
 looking in the /dev/shm/ directory.
 
 
-### Auto-Starting with Systemd
+### Auto-Starting with systemd
 
-Look inside the doc/ directory for an example systemd service file as well as the instructions for how to
-implement the scripts necessary to auto-start linbpq and qtsm at boot up.
+Look inside the doc/ directory for an example systemd service file as well as the instructions for how to implement the scripts necessary to auto-start linbpq and qtsm at boot up.
 
 
 ### Be prepared to bug report!
