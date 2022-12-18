@@ -39,26 +39,52 @@ nano runbpq
 ```
 
 Example contents of ```runbpq```:
-Before:
-```
-cd /home/pi/node
-```
-After:
 ```
 cd /home/pi/linbpq_rtg
 ```
-Note: you can rename your ```linbpq_rtg``` installation to anything, just ensure the path is set accordingly in ```runbpq```.
+If this already matches your directory structure, you're good.
 
-Open the ```bpq32.cfg``` in whichever text editor you prefer (mousepad, vim or nano for example)
+**Note: you can rename your ```linbpq_rtg``` installation to anything, just ensure the path is set accordingly in ```runbpq```**
 
-To get up and running, the callsign and alias of the node needs to be set to your own and sysop login info needs to be set- The web HTTP and telnet login for the sysop is located down in the **TELNET** port section of the ```bpq32.cfg``` file.
+Open the ```bpq32.cfg``` in whichever text editor you prefer (mousepad, vim or nano for example) and begin filling in the parts marked out by the comments such as all of the places where ```YOURCALL``` is mentioned.
 
-At this point is should be possible to launch the ```./runbpq``` script and then interact with it via the web interface via http://IP-of-your-pi:8080/
+# Additional Libraries
 
-If you have a web browser running on your Pi, http://127.0.0.1:8080
+LinBPQ may fail to start if there are some required libraries missing from the operating system, as of version 6.0.23.33 there is a requirement for ```libasound```, installed with:
+
+* Raspberry Pi:
+```
+sudo apt install libasound
+```
+
+* linbpq for x86 requires 32bit libraries:
+```
+sudo apt install libasound:i386
+```
+
+# Set your sysop login info
+
+The web HTTP and telnet login for the sysop is located down in the **TELNET** port section of the ```bpq32.cfg``` file.
+Configure as necessary, modifying the example provided within the ```bpq32.cfg``` file.
+
+At this point is should be possible to launch the ```./runbpq``` script and then interact with the node via the web interface.
+Open a terminal and run ```./runbpq```, it should start the node and sit showing debug information, meanwhile open a browser to ``` http://IP-of-your-pi:8080/```
+
+If you have a web browser running on your Pi, open ```http://127.0.0.1:8080```
+
+You should be prompted with a webpage with a selection of links including one to a sysop sign-in.
+If not, these docs are broken and you need to report this to ```pe1rrr@amsat.org```!
+
+
+# Headless running / automatic 
 
 Setting up auto-start and headless running is covered under the ```systemd``` setup below in the appendix
 
+It is also covered in my packet artciles section along with a host of other useful information for BPQ node operation. 
+
+Visit **http://eindhoven.space/radio-experiments/packet-radio**
+
+----
 
 # File descriptions: (excluding auto-generated files)
 
@@ -148,16 +174,15 @@ With:
 
 * ```qtsm``` - QtSoundmodem - Advanced Soundcard modem, extended from UZ7HO's SoundModem
         
-* ```qtsm_rpi3``` - wrapper script for Raspberry Pi 3. Due to a glitch in ALSA, you will need to use
-                    'aoss', an sound system bridge, this should be installed with:
-                        sudo apt install alsa-oss
-                    This installs a tool called aoss which bridges ALSA, a workaround for the PTT-delay
-                    bug in the OS, QtSoundModem.ini will need to be provided with /dev/dsp0 style paths.
+* ```qtsm_rpi3``` - wrapper script for Raspberry Pi 3. Due to a glitch in ALSA, you will need to use 'aoss', an sound system bridge, this should be installed with:
+```
+sudo apt install alsa-oss
+```
+This installs a tool called aoss which bridges ALSA, a workaround for the PTT-delay bug in the OS, QtSoundModem.ini will need to be provided with /dev/dsp0 style paths.
 
 * ```qtterm``` - QtTermTCP - Multi-terminal tab/windowed interface for BPQ32/linbpq
 
-* debug-tools/**gdbwait** - GDB debugging script which will automatically attach to the running linbpq process.
-                  See 'How to be helpful' below for more about this.
+* debug-tools/**gdbwait** - GDB debugging script which will automatically attach to the running linbpq process. See 'How to be helpful' below for more about this.
 
 **Important**
 
