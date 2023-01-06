@@ -4,15 +4,14 @@ After=network.target
 
 [Service]
 Type=forking
-WorkingDirectory=/home/bpq/nodes/pe1rrr
+WorkingDirectory=/home/pi/linbpq_rtg
 Restart=always
 RestartSec=90
 StartLimitInterval=400
 StartLimitBurst=3
-User=bpq
-Group=bpq
-ExecStart=/usr/bin/screen -S linbpq -d -m /home/bpq/nodes/pe1rrr/runbpq
-#ExecStart=/bin/bash /home/bpq/nodes/pe1rrr/runbpq
+User=pi
+Group=pi
+ExecStart=/usr/bin/screen -S linbpq -d -m /home/pi/linbpq_rtg/runbpq
 SyslogIdentifier=LinBPQ
 
 [Install]
