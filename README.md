@@ -23,6 +23,15 @@ human-readable. Do not attempt to edit these files with a text editor.
 
 # Ok so you downloaded the repo, now what?
 
+Some required libraries:
+
+```
+sudo apt install libcap0.8-dev
+sudo apt install libasound2-dev
+sudo apt install libz3-4
+
+```
+
 Make a note of the current working directory and put it into the top of the ```runbpq``` script.
 
 
@@ -48,19 +57,6 @@ Note: you can rename your ```linbpq_rtg``` installation to anything, just ensure
 
 Open the ```bpq32.cfg``` in whichever text editor you prefer (mousepad, vim or nano for example) and begin filling in the parts marked out by the comments such as all of the places where ```YOURCALL``` is mentioned.
 
-# Additional Libraries
-
-LinBPQ may fail to start if there are some required libraries missing from the operating system, as of version 6.0.23.33 there is a requirement for ```libasound```, installed with:
-
-* Raspberry Pi:
-```
-sudo apt install libasound
-```
-
-* linbpq for x86 requires 32bit libraries:
-```
-sudo apt install libasound:i386
-```
 
 # Set your sysop login info
 
