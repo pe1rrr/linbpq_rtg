@@ -1,1 +1,8 @@
-Sysop has not yet written any info
+The sysop has not yet written any info
+
+This node was set up via 
+
+git clone https://github.com/pe1rrr/linbpq_rtg
+
+See: https://eindhoven.space/radio-experiments/packet-radio/bpq-technicals/node/linbpq-ready-to-go/
+
