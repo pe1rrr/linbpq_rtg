@@ -15,7 +15,7 @@ binstore=$PWD/bpqbin/archive
 function download() {
         wget ${bpqwww} -O ${bpqbin}/${binary}.tmp
 	chmod 755 "${bpqbin}/${binary}.tmp"
-	chmod u+s "${bpqbin}/${binary}.tmp"
+	#chmod u+s "${bpqbin}/${binary}.tmp"
 	version=`${bpqbin}/${binary}.tmp -v | grep Version | cut -d' ' -f 7`
 	if [ -z ${version} ];
        	then
