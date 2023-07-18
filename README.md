@@ -23,13 +23,43 @@ human-readable. Do not attempt to edit these files with a text editor.
 
 # Ok so you downloaded the repo, now what?
 
-Some required libraries:
+Some required libraries- note for 64bit skip ahead to ARM/x64:
 
 ```
 sudo apt install libpcap0.8-dev
 sudo apt install libasound2-dev
 sudo apt install libz3-4
+sudo apt-get install zlib1g
 sudo apt install libminiupnpc17
+
+
+64bit is not officially supported by BPQ, there can be issues running 64bit
+setups, sometimes producing anomalous results. We are still finding these 
+issues.
+
+If you are trying to run on a freshly installed 64bit system, you will need
+to install the 32bit versions of these libraries as by default it will only
+install the 64bit vesions which BPQ is not built against. To do this, append
+":armhf" to the end of each library to install. These instructions are not
+well tested so if these do not work please report an issue via the BPQ32 
+groups.io : https://groups.io/g/bpq32
+
+ARM:
+
+sudo apt install libpcap0.8-dev:armhf
+sudo apt install libasound2-dev:armhf
+sudo apt install libz3-4:armhf
+sudo apt install zlib1g:armhf
+sudo apt install libminiupnpc17:armhf
+
+
+x64:
+
+sudo apt install libpcap0.8-dev:i386
+sudo apt install libasound2-dev:i386
+sudo apt install libz3-4:i386
+sudo apt install zlib1g:i386
+sudo apt install libminiupnpc17:i386
 
 ```
 
