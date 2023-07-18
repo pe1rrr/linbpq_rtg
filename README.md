@@ -26,9 +26,10 @@ human-readable. Do not attempt to edit these files with a text editor.
 Some required libraries:
 
 ```
-sudo apt install libcap0.8-dev
+sudo apt install libpcap0.8-dev
 sudo apt install libasound2-dev
 sudo apt install libz3-4
+sudo apt install libminiupnpc17
 
 ```
 
