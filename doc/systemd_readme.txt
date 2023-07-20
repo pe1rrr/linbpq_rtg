@@ -26,7 +26,7 @@ I recommend running a script rather than the binary directly so that if you need
 #!/bin/bash
 #
 # Edit to reflect the directory location of linBPQ installation
-cd /home/bpq/nodes/pe1rrr
+cd /home/pi/linbpq_rtg
 #
 ./linbpq
 
@@ -35,13 +35,27 @@ cd /home/bpq/nodes/pe1rrr
 Set permissions
 ===============
 
-Set execute and the correct USERID and GROUP permissions on the runbpq script AND linbpq binary. This will make it run with the correct user ID if at any point it is launched manually.
+Set execute and the correct USERNAME and GROUP permissions on the runbpq script AND linbpq binary. 
 
    sudo chmod +x runbpq
-   chown <userid>:<groupid> runbpq linbpq
-   sudo chmod u+s runbpq linbpq
+   chown <username>:<groupname> runbpq linbpq
 
 Note: Some of the above may not be necessary if you have used the update-linbpq.sh script, as this sets the permissions for you.
+
+If you want to make a new group and user for running BPQ then check out
+the following pages before proceeding.
+
+man adduser
+man addgroup
+
+The entire directory structure for BPQ will need to be chown'd to the new
+user and group. chown -R does a recursive change-owner when provided:
+
+cd /home/pi/linbpq_rtg
+
+chown -R MyNewUser:MyNewGroup .
+
+
 
 Starting linbpq from systemd
 ============================
@@ -60,10 +74,9 @@ After=network.target
 Type=forking
 WorkingDirectory=/home/bpq/nodes/pe1rrr
 Restart=always
-User=bpq
-Group=bpq
-ExecStart=/usr/bin/screen -S linbpq -d -m /home/bpq/nodes/pe1rrr/runbpq
-#ExecStart=/bin/bash /home/bpq/nodes/pe1rrr/runbpq
+User=pi
+Group=pi
+ExecStart=/usr/bin/screen -S linbpq -d -m /home/pi/linbpq_rtg/runbpq
 SyslogIdentifier=LinBPQ
 
 [Install]

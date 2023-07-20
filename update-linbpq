@@ -1,21 +1,37 @@
 #!/bin/bash 
-#
+# Requirements: sudo apt install wget curl
+#             
+# Usage: ./update-bpq  -  updates to Beta
+#        ./update-bpq 1 - takes file from Test instead
 #
 # Settings
-# Path to BPQ binary directory
-bpqbin=$PWD/bpqbin
-# Name of binary to pull as well as use
-binary=pilinbpq
-# WWW path to download
-bpqwww="http://www.cantab.net/users/john.wiseman/Downloads/Beta/${binary}"
 
-binstore=$PWD/bpqbin/archive
+# Path to where you keep the (pi)linbpq binary
+bpqbin=bpqbin
+
+# Name of binary to pull (don't change if using pilinbpq)
+binary=pilinbpq
+
+
+# Set a directory where we can store the old versions.
+
+binstore=bpqbin/archive
+
 #### End of Settings
+
+Dir=$1
+
+if [[ "$Dir" = "1" ]]
+then
+	URLDir="Test"
+else
+	URLDir="Beta"
+fi
+bpqwww="http://www.cantab.net/users/john.wiseman/Downloads/${URLDir}/${binary}"
 
 function download() {
         wget ${bpqwww} -O ${bpqbin}/${binary}.tmp
 	chmod 755 "${bpqbin}/${binary}.tmp"
-	#chmod u+s "${bpqbin}/${binary}.tmp"
 	version=`${bpqbin}/${binary}.tmp -v | grep Version | cut -d' ' -f 7`
 	if [ -z ${version} ];
        	then
