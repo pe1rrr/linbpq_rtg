@@ -51,9 +51,10 @@ function download() {
 	gzip "$binstore/${binary}.${version}"
 	echo "Setting Permissions on ${bpqbin}/${binary}.${version}"
 	sudo setcap "CAP_NET_ADMIN=ep CAP_NET_RAW=ep CAP_NET_BIND_SERVICE=ep"  "${bpqbin}/${binary}.${version}"
-	echo "Linking..."
+	echo "Swapping $binary Link..."
 	unlink "${bpqbin}/${binary}"
-	ln -s "${bpqbin}/${binary}.${version}" "${bpqbin}/${binary}"
+	cd ${bpqbin}
+	ln -s "${binary}.${version}" "${binary}"
 	echo "Complete"
 
 }
