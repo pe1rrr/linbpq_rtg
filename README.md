@@ -180,23 +180,27 @@ Good to know: Updates via the web interface will create .bak backup copies of fi
 
 Due to the fact people cannot behave and stick to the amateur radio licensing rules, the automapping has been/will be completely turned off and you will have to manually ask for a link which requires you sending me (PE1RRR) your DNS/Host/IP mapping and full amateur radio callsign as a complete map line for my node. e.g. 
 
-"<call> <dns/static ip> udp <udp port> B"
+```<call> <dns/static ip> udp <udp port> B```
 
 Unlicensed stations are NOT permitted to link to this system and the underlaying network, to do so is unauthorized and introduces risk to our own licenses. 
+
+Should you wish to have your fully licensed amateur radio node propagate through the network, please get in touch so that we can arrange a full direct connection to PE1RRR-7, my main network node, if resources permit!
+
+Once linked into the amateur radio network, you should be able to reach the chat nodes such as RRRCHT. If you wish to link your own chat-server to the network (if you absolutely must run one) there still needs to be some manual configuration done on them to allow your chat-server to join the network, we also have a structured setup as the nodes in the chat are vast and will easily saturate a RF link, so please read this document first:
+
+https://eindhoven.space/radio-experiments/packet-radio/bpq-technicals/bpq-chat/chat-hub-linking/
+
+## CB Network for unlicensed users
 
 If you are unlicensed but still want to play with packet radio nodes you can use the CB Network instead.
 
 My network provides an open CB Network node via mapping:
 
-MAP NL5POP cbnet.ehvairport.com udp 27235 B
+```MAP NL5POP cbnet.ehvairport.com udp 27235 B```
 
 As for accessing the amateur radio network without a license, we cannot permit that. Carrying your traffic via our own licenses carries extreme risks to us without any to you so you must understand- get licensed or be prepared to meet hostility the entire time you are discovered pirating on our (amateur radio) network.
 
-Should you wish to have your node propagate through the network, please get in touch so that we can arrange a direct connection to PE1RRR-7, my main network node, if resources permit!
 
-Once linked into the network, you should be able to reach nodes such as RRRCHT. If you wish to link your own chat-server to the network (if you absolutely must run one) there still needs to be some manual configuration done on them to allow your chat-server to join the network, we also have a structured setup as the nodes in the chat are vast and will easily saturate a RF link, so please read this document first:
-
-https://eindhoven.space/radio-experiments/packet-radio/bpq-technicals/bpq-chat/chat-hub-linking/
 
 
 # Additional Tools provided:
